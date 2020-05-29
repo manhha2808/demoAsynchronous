@@ -7,10 +7,11 @@
 }
 
 .btn-demo {
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px 150px;
+    padding: 25px;
     background: #1abc9c;
     border-radius: 25px;
     border: none;
@@ -30,4 +31,8 @@
     background: #ffffff;
     color: #1abc9c;
     border: solid 2px #1abc9c;
+}
+
+#users-list-table {
+    width: 100%;
 }

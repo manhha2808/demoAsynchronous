@@ -45,6 +45,9 @@ block content
                 .button-div
                     button.btn-demo#async-true async: true
                     button.btn-demo#async-false async: false
+                .button-div
+                    button.btn-demo#alert-msg Alert Message
+                    button.btn-demo#console-msg Log Message
     section#portfolio.page-section.portfolio
         .container
             // Portfolio Section Heading
@@ -249,6 +252,40 @@ block content
                                 // Portfolio Modal - Text
                                 p.mb-5
                                     | Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
+                                button.btn.btn-primary(href='#', data-dismiss='modal')
+                                    i.fas.fa-times.fa-fw
+                                    | Close Window
+    #ajaxModal.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='#ajaxLabel', aria-hidden='true')
+        .modal-dialog.modal-xl(role='document')
+            .modal-content
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true')
+                        i.fas.fa-times
+                .modal-body.text-center
+                    .container
+                        .row.justify-content-center
+                            .col-lg-8
+                                // Portfolio Modal - Title
+                                h2.portfolio-modal-title.text-secondary.mb-0 Users list
+                                // Icon Divider
+                                .divider-custom
+                                    .divider-custom-line
+                                    .divider-custom-icon
+                                        i.fas.fa-star
+                                    .divider-custom-line
+                                // Portfolio Modal - Image
+                                //img.img-fluid.rounded.mb-5(src='assets/img/portfolio/game.png', alt='Controller')
+                                // Portfolio Modal - Text
+                                .user-list
+                                    table.table#users-list-table
+                                        thead.thead-dark
+                                            tr
+                                                th(scope='col') #
+                                                th(scope='col') Team
+                                                th(scope='col') Name
+                                                th(scope='col') Position
+                                                th(scope='col') Gender
+                                        tbody
                                 button.btn.btn-primary(href='#', data-dismiss='modal')
                                     i.fas.fa-times.fa-fw
                                     | Close Window
