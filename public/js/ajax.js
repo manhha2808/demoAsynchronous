@@ -74,17 +74,17 @@ $(document).ready(function () {
         ajaxFunction.asyncTrueAjax();
     });
 
-    $(document).on('click', '#async-false', function () {
+    $(document).on('click', '#async-false', function (e) {
         e.preventDefault();
         ajaxFunction.asyncFalseAjax();
     });
 
-    $(document).on('click', '#alert-msg', function () {
+    $(document).on('click', '#alert-msg', function (e) {
         e.preventDefault();
         alert('Non-Blocking');
     });
 
-    $(document).on('click', '#console-msg', function () {
+    $(document).on('click', '#console-msg', function (e) {
         e.preventDefault();
         console.log('Non-Blocking');
     });
