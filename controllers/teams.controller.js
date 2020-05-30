@@ -4,7 +4,7 @@ let teamsFunction = {
     getTeamsList: (req, res) => {
         setTimeout(() => {
             res.json(Teams);
-        }, 1000);
+        }, 5000);
         // res.json(Teams);
     },
 }
