@@ -266,6 +266,28 @@ block content
                         .row.justify-content-center
                             .col-lg-8
                                 // Portfolio Modal - Title
+                                h2.portfolio-modal-title.text-secondary.mb-0 Teams list
+                                // Icon Divider
+                                .divider-custom
+                                    .divider-custom-line
+                                    .divider-custom-icon
+                                        i.fas.fa-star
+                                    .divider-custom-line
+                                // Portfolio Modal - Image
+                                //img.img-fluid.rounded.mb-5(src='assets/img/portfolio/game.png', alt='Controller')
+                                // Portfolio Modal - Text
+                                .user-list
+                                    table.table#teams-list-table
+                                        thead.thead-dark
+                                            tr
+                                                th(scope='col') #
+                                                th(scope='col') Name
+                                                th(scope='col') Technical
+                                        tbody
+
+                        .row.justify-content-center
+                            .col-lg-8
+                                // Portfolio Modal - Title
                                 h2.portfolio-modal-title.text-secondary.mb-0 Users list
                                 // Icon Divider
                                 .divider-custom
@@ -289,6 +311,7 @@ block content
                                 button.btn.btn-primary(href='#', data-dismiss='modal')
                                     i.fas.fa-times.fa-fw
                                     | Close Window
+
     section#about.page-section.bg-primary.text-white.mb-0
         .container
             // About Section Heading

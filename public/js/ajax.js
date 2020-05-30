@@ -1,5 +1,5 @@
 let ajaxFunction = {
-    asyncTrueAjax: () => {
+    asyncTrueAjaxUser: () => {
         console.log('start calling ajax with async: true => ' + moment().format('HH:mm:ss.SSS'));
 
         $.ajax({
@@ -9,22 +9,12 @@ let ajaxFunction = {
             processData: false,
             contentType: false,
             success: function (response) {
-                ajaxFunction.ajaxSuccess(response);
+                ajaxFunction.ajaxUserSuccess(response);
             }
         });
-
-        Promise.resolve().then(() => {
-            console.log('Promise => ' + moment().format('HH:mm:ss.SSS'));
-        });
-
-        setTimeout(() => {
-            console.log('setTimeOut function => ' + moment().format('HH:mm:ss.SSS'));
-        }, 0);
-
-        console.log('end of function => ' + moment().format('HH:mm:ss.SSS'));
     },
 
-    asyncFalseAjax: () => {
+    asyncFalseAjaxUser: () => {
         console.log('start calling ajax with async: false => ' + moment().format('HH:mm:ss.SSS'));
 
         $.ajax({
@@ -34,22 +24,12 @@ let ajaxFunction = {
             processData: false,
             contentType: false,
             success: function (response) {
-                ajaxFunction.ajaxSuccess(response);
+                ajaxFunction.ajaxUserSuccess(response);
             }
         });
-
-        Promise.resolve().then(() => {
-            console.log('Promise resolve => ' + moment().format('HH:mm:ss.SSS'));
-        });
-
-        setTimeout(() => {
-            console.log('setTimeOut function => ' + moment().format('HH:mm:ss.SSS'));
-        }, 100);
-
-        console.log('end of function => ' + moment().format('HH:mm:ss.SSS'));
     },
 
-    ajaxSuccess: (response) => {
+    ajaxUserSuccess: (response) => {
         console.log('start execute success function of ajax => ' + moment().format('HH:mm:ss.SSS'));
         let html = '';
         response.forEach((result) => {
@@ -62,21 +42,84 @@ let ajaxFunction = {
             html += `</tr>`;
         });
         $('#users-list-table tbody').html(html);
+
+        console.log('end of success function => ' + moment().format('HH:mm:ss.SSS'));
+    },
+
+    asyncTrueAjaxTeam: () => {
+        console.log('start calling ajax with async: true => ' + moment().format('HH:mm:ss.SSS'));
+
+        $.ajax({
+            async: true,
+            type: "GET",
+            url: "/teams",
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                ajaxFunction.ajaxTeamSuccess(response);
+            }
+        });
+    },
+
+    asyncFalseAjaxTeam: () => {
+        console.log('start calling ajax with async: false => ' + moment().format('HH:mm:ss.SSS'));
+
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: "/teams",
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                ajaxFunction.ajaxTeamSuccess(response);
+            }
+        });
+    },
+
+    ajaxTeamSuccess: (response) => {
+        console.log('start execute success function of ajax => ' + moment().format('HH:mm:ss.SSS'));
+        let html = '';
+        response.forEach((result) => {
+            html += `<tr>`;
+            html += `<td>${result.id}</td>`;
+            html += `<td>${result.name}</td>`;
+            html += `<td>${result.technical}</td>`;
+            html += `</tr>`;
+        });
+        $('#teams-list-table tbody').html(html);
         $('#ajaxModal').modal('show');
 
         console.log('end of success function => ' + moment().format('HH:mm:ss.SSS'));
     }
 }
 
+let externalFunction = () => {
+    Promise.resolve().then(() => {
+        console.log('Promise => ' + moment().format('HH:mm:ss.SSS'));
+    });
+
+    setTimeout(() => {
+        console.log('setTimeOut function => ' + moment().format('HH:mm:ss.SSS'));
+    }, 0);
+
+    console.log('end of function => ' + moment().format('HH:mm:ss.SSS'));
+}
+
 $(document).ready(function () {
-    $(document).on('click', '#async-true', function (e) {
+    $(document).on('click', '#async-true', async function (e) {
         e.preventDefault();
-        ajaxFunction.asyncTrueAjax();
+        ajaxFunction.asyncTrueAjaxUser();
+        ajaxFunction.asyncTrueAjaxTeam();
+        // $('#ajaxModal').modal('show');
+        externalFunction();
     });
 
     $(document).on('click', '#async-false', function (e) {
         e.preventDefault();
-        ajaxFunction.asyncFalseAjax();
+        ajaxFunction.asyncFalseAjaxUser();
+        ajaxFunction.asyncFalseAjaxTeam();
+        $('#ajaxModal').modal('show');
+        externalFunction();
     });
 
     $(document).on('click', '#alert-msg', function (e) {

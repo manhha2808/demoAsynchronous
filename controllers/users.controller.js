@@ -4,7 +4,7 @@ let userFunction = {
     getUsersList: (req, res) => {
         setTimeout(() => {
             res.json(Users);
-        }, 2000);
+        }, 5000);
         // res.json(Users);
     }
 }
