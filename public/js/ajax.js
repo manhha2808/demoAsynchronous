@@ -1,5 +1,5 @@
 function callAjax (url, async, callback) {
-    console.log('start calling ajax with async: ' + async +' => ' + moment().format('HH:mm:ss.SSS'));
+    console.log('start calling ajax: ' + url + ' with async: ' + async +' => ' + moment().format('HH:mm:ss.SSS'));
     return $.ajax({
         async: async,
         type: "GET",
@@ -47,28 +47,28 @@ function renderTeamHTML (arrayObj) {
 
 let ajaxFunction = {
     ajaxUserSuccess: (response) => {
-        console.log('start execute success function of ajax => ' + moment().format('HH:mm:ss.SSS'));
+        console.log('start execute success function of ajax: /users => ' + moment().format('HH:mm:ss.SSS'));
         renderUserHTML(response);
-        console.log('end of success function => ' + moment().format('HH:mm:ss.SSS'));
+        console.log('end of success function of ajax users => ' + moment().format('HH:mm:ss.SSS'));
     },
 
     ajaxTeamSuccess: (response) => {
-        console.log('start execute success function of ajax => ' + moment().format('HH:mm:ss.SSS'));
+        console.log('start execute success function of ajax: /teams => ' + moment().format('HH:mm:ss.SSS'));
         renderTeamHTML(response);
-        console.log('end of success function => ' + moment().format('HH:mm:ss.SSS'));
+        console.log('end of success function of ajax teams => ' + moment().format('HH:mm:ss.SSS'));
     }
 }
 
 let externalFunction = () => {
     Promise.resolve().then(() => {
-        console.log('Promise => ' + moment().format('HH:mm:ss.SSS'));
+        console.log('this is Promise resolve (Microtask) => ' + moment().format('HH:mm:ss.SSS'));
     });
 
     setTimeout(() => {
-        console.log('setTimeOut function => ' + moment().format('HH:mm:ss.SSS'));
+        console.log('this is setTimeOut (Macrotask) function => ' + moment().format('HH:mm:ss.SSS'));
     }, 0);
 
-    console.log('end of function => ' + moment().format('HH:mm:ss.SSS'));
+    console.log('this is console.log => ' + moment().format('HH:mm:ss.SSS'));
 }
 
 async function ajaxRefactor () {
@@ -111,5 +111,10 @@ $(document).ready(function () {
     $(document).on('click', '#alert-msg', function (e) {
         e.preventDefault();
         alert('Non-Blocking');
+    });
+
+    $(document).on('click', '#micro-and-macro', function (e) {
+        e.preventDefault();
+        externalFunction();
     });
 });
