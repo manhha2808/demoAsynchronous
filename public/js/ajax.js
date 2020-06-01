@@ -93,6 +93,7 @@ $(document).ready(function () {
     $(document).on('click', '#async-true', function (e) {
         e.preventDefault();
         setVisible('#loading', true);
+
         callAjax('/users', true, ajaxFunction.ajaxUserSuccess)
         callAjax('/teams', true, ajaxFunction.ajaxTeamSuccess);
         $('#ajaxModal').modal('show');
@@ -106,8 +107,10 @@ $(document).ready(function () {
     $(document).on('click', '#async-false', function (e) {
         e.preventDefault();
         setVisible('#loading', true);
+
         callAjax('/users', false, ajaxFunction.ajaxUserSuccess)
         callAjax('/teams', false, ajaxFunction.ajaxTeamSuccess);
+
         $('#ajaxModal').modal('show');
         externalFunction();
 
@@ -119,7 +122,9 @@ $(document).ready(function () {
     $(document).on('click', '#asynchronous', async function (e) {
         e.preventDefault();
         setVisible('#loading', true);
+
         await ajaxRefactor();
+
         $('#ajaxModal').modal('show');
         externalFunction();
 
