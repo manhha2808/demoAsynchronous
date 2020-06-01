@@ -1,3 +1,7 @@
+function setVisible(selector, visible) {
+    document.querySelector(selector).style.display = visible ? 'block' : 'none';
+}
+
 function callAjax (url, async, callback) {
     console.log('start calling ajax: ' + url + ' with async: ' + async +' => ' + moment().format('HH:mm:ss.SSS'));
     return $.ajax({
@@ -85,27 +89,43 @@ async function ajaxRefactor () {
 }
 
 $(document).ready(function () {
+    setVisible('#loading', false);
     $(document).on('click', '#async-true', function (e) {
         e.preventDefault();
+        setVisible('#loading', true);
         callAjax('/users', true, ajaxFunction.ajaxUserSuccess)
         callAjax('/teams', true, ajaxFunction.ajaxTeamSuccess);
         $('#ajaxModal').modal('show');
         externalFunction();
+
+        setTimeout(() => {
+            setVisible('#loading', false);
+        }, 2000);
     });
 
     $(document).on('click', '#async-false', function (e) {
         e.preventDefault();
+        setVisible('#loading', true);
         callAjax('/users', false, ajaxFunction.ajaxUserSuccess)
         callAjax('/teams', false, ajaxFunction.ajaxTeamSuccess);
         $('#ajaxModal').modal('show');
         externalFunction();
+
+        setTimeout(() => {
+            setVisible('#loading', false);
+        }, 0);
     });
 
     $(document).on('click', '#asynchronous', async function (e) {
         e.preventDefault();
+        setVisible('#loading', true);
         await ajaxRefactor();
         $('#ajaxModal').modal('show');
         externalFunction();
+
+        setTimeout(() => {
+            setVisible('#loading', false);
+        }, 0);
     });
 
     $(document).on('click', '#alert-msg', function (e) {
