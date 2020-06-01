@@ -50,7 +50,7 @@ block content
                     button.btn-demo#alert-msg Alert Message
                     button.btn-demo#asynchronous Asynchronous
                 .button-div.justify-content-center
-                    button.btn-demo#micro-and-macro Processing priority
+                    button.btn-demo#micro-and-macro(data-toggle='modal', data-target='#portfolioModal6') Processing priority
 
     section#portfolio.page-section.portfolio
         .container
@@ -259,6 +259,32 @@ block content
                                 button.btn.btn-primary(href='#', data-dismiss='modal')
                                     i.fas.fa-times.fa-fw
                                     | Close Window
+    #portfolioModal6.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='#portfolioModal5Label', aria-hidden='true')
+        .modal-dialog.modal-xl(role='document')
+            .modal-content
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true')
+                        i.fas.fa-times
+                .modal-body.text-center
+                    .container
+                        .row.justify-content-center
+                            .col-lg-8
+                                // Portfolio Modal - Title
+                                h2.portfolio-modal-title.text-secondary.mb-0 Surprise
+                                // Icon Divider
+                                .divider-custom
+                                    .divider-custom-line
+                                    .divider-custom-icon
+                                        i.fas.fa-star
+                                    .divider-custom-line
+                                // Portfolio Modal - Image
+                                img.img-fluid.rounded.mb-5(src='assets/img/giphy.webp', alt='giphy')
+                                // Portfolio Modal - Text
+                                p.mb-5
+                                    | Please check the Console
+                                button.btn.btn-primary(href='#', data-dismiss='modal')
+                                    i.fas.fa-times.fa-fw
+                                    | Close Window
     #ajaxModal.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='#ajaxLabel', aria-hidden='true')
         .modal-dialog.modal-xl(role='document')
             .modal-content
@@ -267,6 +293,8 @@ block content
                         i.fas.fa-times
                 .modal-body.text-center
                     .container
+                        img.img-fluid.rounded.mb-5(src='assets/img/meme.webp', alt='meme')
+
                         .row.justify-content-center
                             .col-lg-8
                                 // Portfolio Modal - Title

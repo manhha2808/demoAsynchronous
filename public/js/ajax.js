@@ -113,7 +113,7 @@ $(document).ready(function () {
 
         setTimeout(() => {
             setVisible('#loading', false);
-        }, 0);
+        }, 2000);
     });
 
     $(document).on('click', '#asynchronous', async function (e) {
