@@ -2,15 +2,15 @@ function setVisible(selector, visible) {
     document.querySelector(selector).style.display = visible ? 'block' : 'none';
 }
 
-function callAjax (url, async, callback) {
-    console.log('start calling ajax: ' + url + ' with async: ' + async +' => ' + moment().format('HH:mm:ss.SSS'));
+function callAjax(url, async, callback) {
+    console.log('start calling ajax: ' + url + ' with async: ' + async + ' => ' + moment().format('HH:mm:ss.SSS'));
     return $.ajax({
         async: async,
         type: "GET",
         url: url,
         processData: false,
         contentType: false,
-        success: function (response) {
+        success: function(response) {
             if (callback)
                 callback(response);
             else
@@ -19,7 +19,7 @@ function callAjax (url, async, callback) {
     });
 }
 
-function renderUserHTML (arrayObj) {
+function renderUserHTML(arrayObj) {
     let html = '';
 
     arrayObj.forEach((result) => {
@@ -35,7 +35,7 @@ function renderUserHTML (arrayObj) {
     $('#users-list-table tbody').html(html);
 }
 
-function renderTeamHTML (arrayObj) {
+function renderTeamHTML(arrayObj) {
     let html = '';
 
     arrayObj.forEach((result) => {
@@ -75,8 +75,8 @@ let externalFunction = () => {
     console.log('this is console.log => ' + moment().format('HH:mm:ss.SSS'));
 }
 
-async function ajaxRefactor () {
-        let userList = callAjax('/users', true);
+async function ajaxRefactor() {
+    let userList = callAjax('/users', true);
     let teamList = callAjax('/teams', true);
 
     await teamList.then((teamRecord) => {
@@ -88,9 +88,9 @@ async function ajaxRefactor () {
     });
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     setVisible('#loading', false);
-    $(document).on('click', '#async-true', function (e) {
+    $(document).on('click', '#async-true', function(e) {
         e.preventDefault();
         setVisible('#loading', true);
 
@@ -104,7 +104,7 @@ $(document).ready(function () {
         }, 2000);
     });
 
-    $(document).on('click', '#async-false', function (e) {
+    $(document).on('click', '#async-false', function(e) {
         e.preventDefault();
         setVisible('#loading', true);
 
@@ -119,7 +119,7 @@ $(document).ready(function () {
         }, 2000);
     });
 
-    $(document).on('click', '#asynchronous', async function (e) {
+    $(document).on('click', '#asynchronous', async function(e) {
         e.preventDefault();
         setVisible('#loading', true);
 
@@ -133,12 +133,12 @@ $(document).ready(function () {
         }, 0);
     });
 
-    $(document).on('click', '#alert-msg', function (e) {
+    $(document).on('click', '#alert-msg', function(e) {
         e.preventDefault();
         alert('Non-Blocking');
     });
 
-    $(document).on('click', '#micro-and-macro', function (e) {
+    $(document).on('click', '#micro-and-macro', function(e) {
         e.preventDefault();
         externalFunction();
     });
