@@ -13,7 +13,7 @@ $(document).ready(function() {
 
     socket.on('other-user', function(data) {
         console.log(data);
-        alert(data + ' show team detail!')
+        // alert(data + ' show team detail!')
     });
 
     $(document).on('click', '#get-user', function(e) {
