@@ -1,5 +1,5 @@
 app.js
-/public/js/lib/**
+bin/
+public/js/lib/**
 public/assets/
-/image/**
 node_modules/
